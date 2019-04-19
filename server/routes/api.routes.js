@@ -1,9 +1,8 @@
 const router = require('express').Router();
+const teacher = require('./teacher.routes');
+const common = require('./common.routes');
 
-router.get('/', (req, res) => {
-  res.json({
-    hola: 'mundo',
-  });
-});
+router.use('/teacher', teacher);
+router.use('/', common);
 
 module.exports = router;
