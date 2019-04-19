@@ -14,6 +14,8 @@ const upload = multer({
         throw new Error('Formato de archivo inválido');
       }
 
+      fs.existsSync(basepath) || fs.mkdirSync(basepath);
+
       fileService.removeFile(`${basepath}/proyecto.zip`);
 
       cb(null, 'proyecto.zip');
@@ -21,4 +23,4 @@ const upload = multer({
   }),
 });
 
-module.exports = upload.single('archivo');
+module.exports = upload.single('project');
