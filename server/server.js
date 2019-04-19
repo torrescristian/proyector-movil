@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+saveTimestamp();
 const routes = require('./routes');
 
 // middlewares
@@ -11,3 +12,10 @@ const port = process.env.PORT || 3000;
 app.listen(port, (req, res) => {
   console.log(`starting server on http://localhost:${port}`);
 });
+
+function saveTimestamp() {
+  const fs = require('fs');
+  const filepath = `${__dirname}/../config/timestamp.json`;
+  const date = JSON.stringify(String(Date.now()));
+  fs.writeFileSync(filepath, date);
+}
