@@ -1,0 +1,172 @@
+{
+	"info": {
+		"_postman_id": "545a452e-f2b2-430d-a95d-a8d517801999",
+		"name": "proyector/core",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/api/teacher/home",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{proyector-core}}/api/teacher/home",
+					"host": [
+						"{{proyector-core}}"
+					],
+					"path": [
+						"api",
+						"teacher",
+						"home"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/teacher/import",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "project",
+							"type": "file",
+							"src": ""
+						}
+					]
+				},
+				"url": {
+					"raw": "{{proyector-core}}/api/teacher/import",
+					"host": [
+						"{{proyector-core}}"
+					],
+					"path": [
+						"api",
+						"teacher",
+						"import"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/teacher/export",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{proyector-core}}/api/teacher/export",
+					"host": [
+						"{{proyector-core}}"
+					],
+					"path": [
+						"api",
+						"teacher",
+						"export"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/qr",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{proyector-core}}/api/qr",
+					"host": [
+						"{{proyector-core}}"
+					],
+					"path": [
+						"api",
+						"qr"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"admin@admin.com\",\r\n    \"password\": \"admin\"\r\n}"
+				},
+				"url": {
+					"raw": "{{proyector-core}}/api/login",
+					"host": [
+						"{{proyector-core}}"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
