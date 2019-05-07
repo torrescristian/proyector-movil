@@ -11,8 +11,9 @@ module.exports = {
    * @returns {string}
    * @param {object} options
    */
-  create(options) {
-    const { name, email } = options;
+  create() {
+    const name = 'admin';
+    const email = 'admin@admin.com';
     const timestampFileName = config.get('timestampFileName');
     const timestamp = require(`${__dirname}/../../config/${timestampFileName}.json`);
 
