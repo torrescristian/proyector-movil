@@ -1,6 +1,7 @@
 const { app } = require('electron');
 
 app.on('ready', () => {
+  process.env.NODE_ENV = 'prod';
   // start server
   require('./server/server.js');
   // config menu
