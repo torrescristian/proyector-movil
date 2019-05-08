@@ -1,9 +1,10 @@
 const multer = require('multer');
 const fs = require('fs');
 const fileService = require('./file.service');
+const httpContext = require('express-http-context');
 
 module.exports = {
-  uploadProject({ fileName, destinationPath }) {
+  uploadProject() {
     const fileName = 'proyecto.zip';
     const destinationPath = `${__dirname}/../../project`;
     const upload = multer({
@@ -23,7 +24,7 @@ module.exports = {
     });
     return upload.single('project');
   },
-  uploadSlide({ fileName, destinationPath }) {
+  uploadSlide() {
     const destinationPath = `${__dirname}/../../project`;
     const upload = multer({
       storage: multer.diskStorage({
@@ -32,7 +33,11 @@ module.exports = {
         },
         filename: function(req, file, cb) {
           fs.existsSync(destinationPath) || fs.mkdirSync(destinationPath);
-          cb(null, `${Date.now()}_${file.originalname}`);
+          const fileName = encodeURIComponent(
+            `${Date.now()}_${file.originalname}`
+          );
+          httpContext.set('filename', fileName);
+          cb(null, fileName);
         },
       }),
     });
