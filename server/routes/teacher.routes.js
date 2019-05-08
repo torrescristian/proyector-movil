@@ -11,6 +11,6 @@ router.post('/import', importMiddleware, teacherController.import);
 router.get('/export', teacherController.export);
 router.post('/slide', slideUploadMiddleware, slideController.insertSlide);
 router.put('/slide/:id', slideController.updateSlide);
-router.delete('/slide/:id', slideController.removeSlide);
+router.delete('/slide/:imgName', slideController.removeSlide);
 
 module.exports = router;

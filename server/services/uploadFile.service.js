@@ -33,9 +33,7 @@ module.exports = {
         },
         filename: function(req, file, cb) {
           fs.existsSync(destinationPath) || fs.mkdirSync(destinationPath);
-          const fileName = encodeURIComponent(
-            `${Date.now()}_${file.originalname}`
-          );
+          const fileName = `${Date.now()}_${file.originalname}`;
           httpContext.set('filename', fileName);
           cb(null, fileName);
         },
