@@ -12,7 +12,7 @@ module.exports = {
     if (!fs.existsSync(imgPath)) {
       res.sendStatus(404);
     }
-    res.sendfile(imgPath);
+    res.sendFile(imgPath);
   },
   insertSlide(req, res) {
     return res.json({
