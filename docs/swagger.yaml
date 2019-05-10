@@ -1,0 +1,104 @@
+swagger: '2.0'
+info:
+  description: |
+    Proyector Móvil server APIs, serve teacher and students endpoints.
+  version: 1.0.0
+  title: Proyector Móvil Core
+  contact:
+    email: cristiantomastorres@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+# host: localhost:3000
+# basePath: /
+tags:
+- name: teacher
+  description: Authorization needed endpoints
+- name: common
+  description: Open endpoints
+# schemes:
+# - http
+paths:
+  /api/teacher/slide:
+    post:
+      tags:
+      - teacher
+      summary: Upload a new slide and return the file name
+      consumes:
+      - multipart/form-data
+      produces:
+      - application/json
+      parameters:
+        - in: formData
+          name: slide
+          type: file
+          description: The file to upload.
+          required: true
+        - $ref: '#/parameters/Authorization'
+      responses:
+        200:
+          description: Name of the uploaded slide in the server
+          schema:
+            type: object
+            properties:
+              filename:
+                type: string
+                example: "1557490568292_nombre_filmina.png"
+        500:
+          description: Internal Server Error
+  /api/teacher/slide/{imgName}:
+    delete:
+      tags:
+      - teacher
+      summary: Delete a slide by the image name
+      parameters:
+        - name: imgName
+          in: path
+          type: string
+          required: true
+          description: Slide image name
+        - $ref: '#/parameters/Authorization'
+      responses:
+        200:
+          description: OK
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /api/slide/{imgName}:
+    get:
+      tags:
+      - common
+      summary: Get a slide by the image name
+      parameters:
+        - name: imgName
+          in: path
+          type: string
+          required: true
+          description: Slide image name
+        - $ref: '#/parameters/Authorization'
+      responses:
+        200:
+          description: Slide image
+          schema:
+            type: file
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+parameters:
+  Authorization:
+    in: header
+    name: Authorization
+    description: Bearer Token
+    type: string
+    required: true
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+# Added by API Auto Mocking Plugin
+host: virtserver.swaggerhub.com
+basePath: /torrescristian/proyector-movil-core/1.0.0
+schemes:
+ - https
+ - http
