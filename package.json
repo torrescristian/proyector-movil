@@ -1,6 +1,6 @@
 {
   "name": "proyector-movil",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Desktop application that emit images to a client in the same local network",
   "main": "main.js",
   "scripts": {
