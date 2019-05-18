@@ -1,17 +1,26 @@
 const fs = require('fs');
 
 module.exports = {
-  removeFile(filepath) {
+  removeFileSync(filepath) {
     fs.existsSync(filepath) && fs.unlinkSync(filepath);
   },
 
-  removeFolder(folderpath) {
+  removeFolderSync(folderpath) {
     const fsExtra = require('fs-extra');
     fs.existsSync(folderpath) && fsExtra.removeSync(folderpath);
   },
 
+  writeFileSync({ data, folderpath, filename }) {
+    fs.existsSync(folderpath) || fs.mkdirSync(folderpath);
+    fs.writeFileSync(`${folderpath}/${filename}`, data);
+  },
+
+  existsSync(filepath) {
+    return fs.existsSync(filepath);
+  },
+  
   zip({ folderpath, destinationFilePath }) {
-    this.removeFile(destinationFilePath);
+    this.removeFileSync(destinationFilePath);
 
     const archiver = require('archiver');
     const archive = archiver('zip', {

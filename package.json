@@ -4,7 +4,7 @@
   "description": "Desktop application that emit images to a client in the same local network",
   "main": "main.js",
   "scripts": {
-    "start": "node ./server/server.js --NODE_ENV=desa",
+    "start": "npx supervisor -- ./server/server.js --NODE_ENV=desa",
     "serve": "electron .",
     "test": "jest"
   },

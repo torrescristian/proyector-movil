@@ -17,7 +17,7 @@ module.exports = {
         },
         filename: function(req, file, cb) {
           fs.existsSync(destinationPath) || fs.mkdirSync(destinationPath);
-          fileService.removeFile(`${destinationPath}/${fileName}`);
+          fileService.removeFileSync(`${destinationPath}/${fileName}`);
           cb(null, fileName);
         },
       }),
@@ -25,14 +25,16 @@ module.exports = {
     return upload.single('project');
   },
   uploadSlide() {
-    const destinationPath = `${__dirname}/../../project`;
+    const basepath = `${__dirname}/../../project`;
+    const destinationPath = `${__dirname}/../../project/proyecto`;
     const upload = multer({
       storage: multer.diskStorage({
         destination: function(req, file, cb) {
+          fs.existsSync(basepath) || fs.mkdirSync(basepath);
+          fs.existsSync(destinationPath) || fs.mkdirSync(destinationPath);
           cb(null, destinationPath);
         },
         filename: function(req, file, cb) {
-          fs.existsSync(destinationPath) || fs.mkdirSync(destinationPath);
           const fileName = `${Date.now()}_${file.originalname}`;
           httpContext.set('filename', fileName);
           cb(null, fileName);

@@ -3,15 +3,13 @@ const path = require('path');
 const fs = require('fs');
 
 const fileService = require('../services/file.service');
-const projectPath = path.resolve(__dirname, '..', '..', 'project');
+const projectPath = path.resolve(__dirname, '..', '..', 'project', 'proyecto');
 
 module.exports = {
   getSlide(req, res) {
     const imgName = req.params.imgName;
     const imgPath = path.resolve(projectPath, imgName);
-    if (!fs.existsSync(imgPath)) {
-      res.sendStatus(404);
-    }
+    fs.existsSync(imgPath) || res.sendStatus(404);
     res.sendFile(imgPath);
   },
   insertSlide(req, res) {
@@ -25,7 +23,7 @@ module.exports = {
     if (!fs.existsSync(imgPath)) {
       res.sendStatus(404);
     }
-    fileService.removeFile(imgPath);
+    fileService.removeFileSync(imgPath);
     res.sendStatus(200);
   },
   updateSlide(req, res) {},

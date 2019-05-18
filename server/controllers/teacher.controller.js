@@ -7,7 +7,7 @@ module.exports = {
     res.sendStatus(200);
   },
   import(req, res) {
-    fileService.removeFolder(`${basepath}/proyecto`);
+    fileService.removeFolderSync(`${basepath}/proyecto`);
 
     fileService.unzip({
       filepath: `${basepath}/proyecto.zip`,
@@ -17,10 +17,27 @@ module.exports = {
     res.sendStatus(200);
   },
   async export(req, res) {
+    const folderpath = `${basepath}/proyecto`;
+
+    fileService.writeFileSync({
+      data: JSON.stringify(req.body.database),
+      folderpath,
+      filename: 'data.json',
+    });
+
     await fileService.zip({
-      folderpath: `${basepath}/proyecto`,
+      folderpath,
       destinationFilePath: `${basepath}/proyecto.zip`,
     });
-    res.download(path.resolve(basepath, 'proyecto.zip'));
+    
+    res.sendStatus(200);
+  },
+  download(req, res) {
+    const filepath = path.resolve(basepath, 'proyecto.zip');
+    if (fileService.existsSync(filepath)) {
+      res.download(filepath);
+    } else {
+      res.sendStatus(404);
+    }
   },
 };

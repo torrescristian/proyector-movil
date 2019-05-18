@@ -8,7 +8,8 @@ const slideUploadMiddleware = require('../middlewares/slideUpload.middleware');
 
 router.get('/home', teacherController.home);
 router.post('/import', importMiddleware, teacherController.import);
-router.get('/export', teacherController.export);
+router.post('/export', teacherController.export);
+router.get('/export', teacherController.download);
 router.post('/slide', slideUploadMiddleware, slideController.insertSlide);
 router.put('/slide/:id', slideController.updateSlide);
 router.delete('/slide/:imgName', slideController.removeSlide);
