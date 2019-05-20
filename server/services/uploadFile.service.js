@@ -8,11 +8,12 @@ module.exports = {
     const fileName = 'proyecto.zip';
     const destinationPath = `${__dirname}/../../project`;
     const upload = multer({
+      limits: {
+        fieldNameSize: 10000,
+        fieldSize: 200,
+      },
       storage: multer.diskStorage({
         destination: function(req, file, cb) {
-          if (file.originalname !== fileName) {
-            throw new Error('Formato de archivo inválido');
-          }
           cb(null, destinationPath);
         },
         filename: function(req, file, cb) {
@@ -28,6 +29,10 @@ module.exports = {
     const basepath = `${__dirname}/../../project`;
     const destinationPath = `${__dirname}/../../project/proyecto`;
     const upload = multer({
+      limits: {
+        fieldNameSize: 10000,
+        fieldSize: 10,
+      },
       storage: multer.diskStorage({
         destination: function(req, file, cb) {
           fs.existsSync(basepath) || fs.mkdirSync(basepath);

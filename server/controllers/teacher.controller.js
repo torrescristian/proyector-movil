@@ -1,23 +1,27 @@
-const basepath = `${__dirname}/../../project`;
 const fileService = require('../services/file.service');
 const path = require('path');
+const fs = require('fs');
+
+const zipFilePath = path.join(__dirname, '/../../project/proyecto.zip');
+const proyectoPath = path.join(__dirname, '/../../project/proyecto');
 
 module.exports = {
   home(req, res) {
     res.sendStatus(200);
   },
-  import(req, res) {
-    fileService.removeFolderSync(`${basepath}/proyecto`);
+  async import(req, res) {
+    fileService.removeFolderSync(proyectoPath);
 
-    fileService.unzip({
-      filepath: `${basepath}/proyecto.zip`,
-      destination: `${basepath}/proyecto`,
+    await fileService.unzip({
+      filepath: zipFilePath,
+      destination: proyectoPath,
     });
 
-    res.sendStatus(200);
+    const data = JSON.parse(fs.readFileSync(path.join(proyectoPath, 'data.json')));
+    res.json(data);
   },
   async export(req, res) {
-    const folderpath = `${basepath}/proyecto`;
+    const folderpath = proyectoPath;
 
     fileService.writeFileSync({
       data: JSON.stringify(req.body.database),
@@ -27,15 +31,15 @@ module.exports = {
 
     await fileService.zip({
       folderpath,
-      destinationFilePath: `${basepath}/proyecto.zip`,
+      destinationFilePath: zipFilePath,
     });
-    
+
     res.sendStatus(200);
   },
   download(req, res) {
-    const filepath = path.resolve(basepath, 'proyecto.zip');
+    const filepath = zipFilePath;
     if (fileService.existsSync(filepath)) {
-      res.download(filepath);
+      res.download(filepath, `proyecto_${Date.now()}.zip`);
     } else {
       res.sendStatus(404);
     }

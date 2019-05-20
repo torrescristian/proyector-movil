@@ -18,7 +18,7 @@ module.exports = {
   existsSync(filepath) {
     return fs.existsSync(filepath);
   },
-  
+
   zip({ folderpath, destinationFilePath }) {
     this.removeFileSync(destinationFilePath);
 
@@ -38,7 +38,11 @@ module.exports = {
   },
 
   unzip({ filepath, destination }) {
-    const unzip = require('unzip');
-    fs.createReadStream(filepath).pipe(unzip.Extract({ path: destination }));
+    const decompress = require('decompress');
+    const decompressUnzip = require('decompress-unzip');
+
+    return decompress(filepath, destination, {
+      plugins: [decompressUnzip()],
+    });
   },
 };
