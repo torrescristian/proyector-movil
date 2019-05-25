@@ -1,12 +1,10 @@
 const { app } = require('electron');
+const loginService = require('./server/services/login.service');
 
-app.on('ready', () => {
-  process.env.NODE_ENV = 'prod';
+app.on('ready', async () => {
   // start server
-  require('./server/server.js');
-  // config menu
-  const menu = require('./electron/menu');
-  menu.init(browser);
+  const server = require('./server/server.js');
+  await server.init();
   // start UI
   browser.init();
 });
@@ -24,7 +22,7 @@ app.on('window-all-closed', () => {
 
 // load teacher page
 const { BrowserWindow } = require('electron');
-const url = require('url');
+const config = require('config');
 
 const browser = {
   mainWindow: null,
@@ -32,18 +30,7 @@ const browser = {
     // open window
     this.mainWindow = new BrowserWindow({ width: 800, height: 500 });
     this.mainWindow.maximize();
-    this.mainWindow.loadURL(
-      url.format({
-        pathname: `${__dirname}/builded-client/teacher/index.html`,
-        protocol: 'file:',
-        slashes: true,
-      })
-    );
-  },
-  redirect(URL = '') {
-    this.mainWindow.loadURL(URL);
-  },
-  redirectFile(file = 'index') {
-    this.mainWindow.loadURL(`${__dirname}/builded-client/teacher/${file}.html`);
+    const teacherUrl = `${config.get('teacherUrl')}?token=${loginService.create()}`;
+    this.mainWindow.loadURL(teacherUrl);
   },
 };

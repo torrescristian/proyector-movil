@@ -1,27 +1,14 @@
 const jwt = require('jsonwebtoken');
 const config = require('config');
 
-function isARegisteredUser({ email, password }) {
-  const user = require(`${__dirname}/../../config/user.json`);
-  return email === user.email && password === user.password;
-}
-
 module.exports = {
   /**
    * @returns {string}
-   * @param {object} options
    */
   create() {
     const name = 'admin';
     const email = 'admin@admin.com';
-    const timestampFileName = config.get('timestampFileName');
-    const timestamp = require(`${__dirname}/../../config/${timestampFileName}.json`);
-
-    if (!isARegisteredUser(options)) {
-      const err = new Error('There is not user with that email or password');
-      err.code = '400';
-      throw err;
-    }
+    const timestamp = require(`${__dirname}/../../config/timestamp.json`);
 
     return jwt.sign({ name, email }, timestamp, {
       expiresIn: '2d',
@@ -33,8 +20,7 @@ module.exports = {
    * @param {string} token
    */
   tokenIsValid(token) {
-    const timestampFileName = config.get('timestampFileName');
-    const timestamp = require(`${__dirname}/../../config/${timestampFileName}.json`);
+    const timestamp = require(`${__dirname}/../../config/timestamp.json`);
     const decoded = jwt.verify(token, timestamp);
     const current_time = Date.now() / 1000;
     return decoded.exp && decoded.exp > current_time;

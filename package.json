@@ -4,8 +4,9 @@
   "description": "Desktop application that emit images to a client in the same local network",
   "main": "main.js",
   "scripts": {
-    "start": "npx supervisor -- ./server/server.js --NODE_ENV=desa",
-    "serve": "electron .",
+    "start": "npx supervisor -- ./server/server.js --NODE_ENV=dev",
+    "serve": "electron . --NODE_ENV=dev",
+    "serve-prod": "electron . --NODE_ENV=production",
     "test": "jest"
   },
   "repository": {
