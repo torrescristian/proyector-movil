@@ -26,5 +26,4 @@ module.exports = {
     fileService.removeFileSync(imgPath);
     res.sendStatus(200);
   },
-  updateSlide(req, res) {},
 };
