@@ -14,17 +14,9 @@ module.exports = {
     qr_svg.pipe(res);
   },
 
-  login(req, res) {
-    const joi = require('joi');
-    const schema = require('../schemas/common.controller.login.schema');
-
-    const result = joi.validate(req.body, schema);
-
-    if (result.error) {
-      return res.status(400).json(result.error);
-    }
-
-    const token = service.create(req.body);
-    res.json({ token });
-  },
+  shareUrl(req, res) {
+    return res.json({
+      url: `http://${ip.address()}:3000`,
+    });
+  }
 };
