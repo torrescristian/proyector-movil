@@ -4,7 +4,7 @@ module.exports = {
   io: null,
   init(server) {
     this.io = SocketIO(server, {
-      pingInterval: 1000,
+      pingInterval: 500,
     });
     this.attachEvents();
   },
