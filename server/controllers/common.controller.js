@@ -1,10 +1,9 @@
 const qr = require('qr-image');
-const ip = require('ip');
-const service = require('../services/login.service');
+const ipService = require('../services/ip.service');
 
 module.exports = {
   qr(req, res) {
-    const url = `http://${ip.address()}:3000`;
+    const url = `http://${ipService.getIPAddress()}:3000`;
 
     const qr_svg = qr.image(url, {
       type: 'png',
@@ -16,7 +15,7 @@ module.exports = {
 
   shareUrl(req, res) {
     return res.json({
-      url: `http://${ip.address()}:3000`,
+      url: `http://${ipService.getIPAddress()}:3000`,
     });
   }
 };
