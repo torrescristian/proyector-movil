@@ -11,6 +11,7 @@ const socketService = require('./services/socket.service');
 
 // middlewares
 app.use(express.static(path.join(__dirname, '..', 'project')));
+app.use('/', express.static(`${__dirname}/../builded-client/students`));
 app.use('/', express.static(`${__dirname}/../builded-client/teacher`));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());

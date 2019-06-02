@@ -6,9 +6,6 @@ const zipFilePath = path.join(__dirname, '/../../project/proyecto.zip');
 const proyectoPath = path.join(__dirname, '/../../project/proyecto');
 
 module.exports = {
-  home(req, res) {
-    res.sendStatus(200);
-  },
   async import(req, res) {
     fileService.removeFolderSync(proyectoPath);
 
