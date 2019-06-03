@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const config = require('config');
+const path = require('path');
 
 module.exports = {
   /**
@@ -8,7 +8,7 @@ module.exports = {
   create() {
     const name = 'admin';
     const email = 'admin@admin.com';
-    const timestamp = require(`${__dirname}/../../config/timestamp.json`);
+    const timestamp = require(path.resolve(__dirname, '..', '..', 'config', 'timestamp.json'));
 
     return jwt.sign({ name, email }, timestamp, {
       expiresIn: '2d',
@@ -20,7 +20,7 @@ module.exports = {
    * @param {string} token
    */
   tokenIsValid(token) {
-    const timestamp = require(`${__dirname}/../../config/timestamp.json`);
+    const timestamp = require(path.resolve(__dirname, '..', '..', 'config', 'timestamp.json'));
     const decoded = jwt.verify(token, timestamp);
     const current_time = Date.now() / 1000;
     return decoded.exp && decoded.exp > current_time;
@@ -28,7 +28,7 @@ module.exports = {
 
   saveTimestamp() {
     const fs = require('fs');
-    const filepath = `${__dirname}/../../config/timestamp.json`;
+    const filepath = path.resolve(__dirname, '..', '..', 'config', 'timestamp.json');
     const date = JSON.stringify(String(Date.now()));
     fs.writeFileSync(filepath, date);
   },

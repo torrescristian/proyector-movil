@@ -1,9 +1,9 @@
-const fileService = require('../services/file.service');
 const path = require('path');
+const fileService = require(path.resolve(__dirname, '..', 'services', 'file.service'));
 const fs = require('fs');
 
-const zipFilePath = path.join(__dirname, '/../../project/proyecto.zip');
-const proyectoPath = path.join(__dirname, '/../../project/proyecto');
+const zipFilePath = path.resolve(__dirname, '..', '..', 'project', 'proyecto.zip');
+const proyectoPath = path.resolve(__dirname, '..', '..', 'project', 'proyecto');
 
 module.exports = {
   async import(req, res) {
@@ -14,7 +14,7 @@ module.exports = {
       destination: proyectoPath,
     });
 
-    const data = JSON.parse(fs.readFileSync(path.join(proyectoPath, 'data.json')));
+    const data = JSON.parse(fs.readFileSync(path.resolve(proyectoPath, 'data.json')));
     res.json(data);
   },
   async export(req, res) {

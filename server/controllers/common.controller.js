@@ -1,5 +1,6 @@
 const qr = require('qr-image');
-const ipService = require('../services/ip.service');
+const path = require('path');
+const ipService = require(path.resolve(__dirname, '..', 'services', 'ip.service'));
 
 module.exports = {
   qr(req, res) {

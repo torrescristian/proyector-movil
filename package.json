@@ -4,9 +4,10 @@
   "description": "Desktop application that emit images to a client in the same local network",
   "main": "main.js",
   "scripts": {
-    "start": "npx supervisor -- ./server/server.js --NODE_ENV=dev",
+    "start": "electron .",
     "serve": "electron . --NODE_ENV=dev",
-    "serve-prod": "electron . --NODE_ENV=production",
+    "build:win:32": "electron-packager ./ --platform=win32 --arch=ia32 --out=./dist --overwrite --app-copyright=\"Copyright © 2019 Cristian Tomas Torres\" --win32metadata.CompanyName=\"Cristian Tomas Torres\" --win32metadata.ProductName=\"Proyector Móvil\" --win32metadata.FileDescription=\"Desktop application that emit images to a client in the same local network\"",
+    "build:win:64": "electron-packager ./ --platform=win32 --arch=x64  --out=./dist --overwrite --app-copyright=\"Copyright © 2019 Cristian Tomas Torres\" --win32metadata.CompanyName=\"Cristian Tomas Torres\" --win32metadata.ProductName=\"Proyector Móvil\" --win32metadata.FileDescription=\"Desktop application that emit images to a client in the same local network\"",
     "test": "jest"
   },
   "repository": {
@@ -23,7 +24,6 @@
     "archiver": "^3.0.0",
     "config": "^3.1.0",
     "decompress": "^4.2.0",
-    "electron": "^4.1.4",
     "express": "^4.16.4",
     "express-http-context": "^1.2.2",
     "fs-extra": "^7.0.1",
@@ -34,6 +34,7 @@
     "socket.io": "^2.2.0"
   },
   "devDependencies": {
+    "electron": "^4.2.3",
     "electron-packager": "^13.1.1"
   }
 }

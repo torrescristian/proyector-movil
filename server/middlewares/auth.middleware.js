@@ -1,4 +1,5 @@
-const service = require('../services/login.service');
+const path = require('path');
+const service = require(path.resolve(__dirname, '..', 'services', 'login.service'));
 
 module.exports = {
   verify(req, res, next) {

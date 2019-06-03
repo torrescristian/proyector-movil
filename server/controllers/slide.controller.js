@@ -2,7 +2,7 @@ const httpContext = require('express-http-context');
 const path = require('path');
 const fs = require('fs');
 
-const fileService = require('../services/file.service');
+const fileService = require(path.resolve(__dirname, '..', 'services', 'file.service'));
 const projectPath = path.resolve(__dirname, '..', '..', 'project', 'proyecto');
 
 module.exports = {

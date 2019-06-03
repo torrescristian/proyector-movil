@@ -1,14 +1,15 @@
 const router = require('express').Router({
   mergeParams: true,
 });
-const commonController = require('../controllers/common.controller');
-const slideController = require('../controllers/slide.controller');
+const path = require('path');
+const commonController = require(path.resolve(__dirname, '..', 'controllers', 'common.controller'));
+const slideController = require(path.resolve(__dirname, '..', 'controllers', 'slide.controller'));
 
 router.get('/', (req, res) => {
-  res.sendFile(`${__dirname}/../../builded-client/students/index.html`);
+  res.sendFile(path.resolve(__dirname, '..', '..', 'builded-client', 'students', 'index.html'));
 });
 router.get('/profesor', (req, res) => {
-  res.sendFile(`${__dirname}/../../builded-client/teacher/index.html`);
+  res.sendFile(path.resolve(__dirname, '..', '..', 'builded-client', 'teacher', 'index.html'));
 });
 router.get('/qr', commonController.qr);
 router.get('/share-url', commonController.shareUrl);

@@ -2,11 +2,12 @@ const multer = require('multer');
 const fs = require('fs');
 const fileService = require('./file.service');
 const httpContext = require('express-http-context');
+const path = require('path');
 
 module.exports = {
   uploadProject() {
     const fileName = 'proyecto.zip';
-    const destinationPath = `${__dirname}/../../project`;
+    const destinationPath = path.resolve(__dirname, '..', '..', 'project');
     const upload = multer({
       limits: {
         fieldNameSize: 10000,
@@ -26,8 +27,8 @@ module.exports = {
     return upload.single('project');
   },
   uploadSlide() {
-    const basepath = `${__dirname}/../../project`;
-    const destinationPath = `${__dirname}/../../project/proyecto`;
+    const basepath = path.resolve(__dirname, '..', '..', 'project');
+    const destinationPath = path.resolve(__dirname, '..', '..', 'project', 'proyecto');
     const upload = multer({
       limits: {
         fieldNameSize: 10000,
