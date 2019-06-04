@@ -14,7 +14,9 @@ module.exports = {
       }
     }
 
-    const [address] = addresses.filter((address) => address.match(/^192\./));
-    return address;
+    const [ address192 ] = addresses.filter((address) => address.match(/^192\./));
+    const [ address10 ] = addresses.filter((address) => address.match(/^10\./));
+    const [ address172 ] = addresses.filter((address) => address.match(/^172\./));
+    return address192 || address10 || address172;
   },
 };
