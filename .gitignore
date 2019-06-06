@@ -1,6 +1,5 @@
 node_modules
 project/**/*.*
-builded-client/students/**/*.*
-builded-client/teacher/**/*.*
 config/timestamp.json
 dist
+submodules
