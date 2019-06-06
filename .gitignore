@@ -2,4 +2,3 @@ node_modules
 project/**/*.*
 config/timestamp.json
 dist
-submodules

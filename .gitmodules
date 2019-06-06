@@ -1,6 +1,6 @@
-[submodule "proyector-movil-teacher"]
-	path = submodules/proyector-movil-teacher
+[submodule "submodules/teacher"]
+	path = submodules/teacher
 	url = https://github.com/torrescristian/proyector-movil-teacher.git
-[submodule "proyector-movil-students"]
-	path = submodules/proyector-movil-students
+[submodule "submodules/students"]
+	path = submodules/students
 	url = https://github.com/torrescristian/proyector-movil-students.git

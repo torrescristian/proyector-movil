@@ -6,10 +6,10 @@ const commonController = require(path.resolve(__dirname, '..', 'controllers', 'c
 const slideController = require(path.resolve(__dirname, '..', 'controllers', 'slide.controller'));
 
 router.get('/', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '..', '..', 'submodules', 'proyector-movil-students', 'dist', 'index.html'));
+  res.sendFile(path.resolve(__dirname, '..', '..', 'submodules', 'students', 'dist', 'index.html'));
 });
 router.get('/profesor', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '..', '..', 'submodules', 'proyector-movil-teacher', 'dist', 'index.html'));
+  res.sendFile(path.resolve(__dirname, '..', '..', 'submodules', 'teacher', 'dist', 'index.html'));
 });
 router.get('/qr', commonController.qr);
 router.get('/share-url', commonController.shareUrl);
