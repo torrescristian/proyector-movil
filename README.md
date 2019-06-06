@@ -5,6 +5,9 @@
 git clone --recursive --branch dev https://github.com/torrescristian/proyector-movil-core.git
 ```
 ```
+git submodule update --init --recursive
+```
+```
 git submodule foreach --recursive git checkout dev
 ```
 
