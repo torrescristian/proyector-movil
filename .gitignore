@@ -4,3 +4,4 @@ builded-client/students/**/*.*
 builded-client/teacher/**/*.*
 config/timestamp.json
 dist
+lib

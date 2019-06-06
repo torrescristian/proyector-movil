@@ -1,14 +1,13 @@
 const { app } = require('electron');
 const path = require('path')
-const loginService = require(path.resolve(__dirname, 'server', 'services', 'login.service'));
+const { LoginService } = require(path.resolve(__dirname, 'lib/services/login.service'));
+const loginService = new LoginService();
 process.env.NODE_CONFIG_DIR = path.resolve(__dirname, 'config');
+const { startServer } = require(path.resolve(__dirname, 'lib/server.js'));
 
 app.on('ready', async () => {
-  // start server
-  const server = require(path.resolve(__dirname, 'server', 'server.js'));
-  await server.init();
-  // start UI
-  browser.init();
+  await startServer();
+  startWindow();
 });
 
 app.on('window-all-closed', () => {
@@ -26,12 +25,9 @@ app.on('window-all-closed', () => {
 const { BrowserWindow } = require('electron');
 const config = require('config');
 
-const browser = {
-  init() {
-    // open window
-    const mainWindow = new BrowserWindow({ width: 800, height: 500 });
-    mainWindow.maximize();
-    const teacherUrl = `${config.get('teacherUrl')}?token=${loginService.create()}`;
-    mainWindow.loadURL(teacherUrl);
-  },
+function startWindow() {
+  const mainWindow = new BrowserWindow({ width: 800, height: 500 });
+  mainWindow.maximize();
+  const teacherUrl = `${config.get('teacherUrl')}?token=${loginService.create()}`;
+  mainWindow.loadURL(teacherUrl);
 };
