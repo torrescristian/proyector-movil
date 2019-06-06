@@ -4,7 +4,7 @@ const path = require('path');
 
 router.use('/api', api);
 router.get('/profesor', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', '..', 'builded-client', 'teacher', 'index.html'));
+  res.sendFile(path.join(__dirname, '..', '..', 'submodules', 'proyector-movil-teacher', 'dist', 'index.html'));
 });
 
 module.exports = router;

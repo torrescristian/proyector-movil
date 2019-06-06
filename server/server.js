@@ -10,8 +10,8 @@ const socketService = require(path.resolve(__dirname, 'services', 'socket.servic
 
 // middlewares
 app.use(express.static(path.resolve(__dirname, '..', 'project')));
-app.use('/', express.static(path.resolve(__dirname, '..', 'builded-client', 'students')));
-app.use('/', express.static(path.resolve(__dirname, '..', 'builded-client', 'teacher')));
+app.use('/', express.static(path.resolve(__dirname, '..', 'submodules', 'students', 'dist')));
+app.use('/', express.static(path.resolve(__dirname, '..', 'submodules', 'teacher', 'dist')));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(httpContext.middleware);
