@@ -1,3 +1,4 @@
+// @ts-check
 const express = require('express');
 const httpContext = require('express-http-context');
 const path = require('path');

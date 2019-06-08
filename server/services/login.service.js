@@ -1,3 +1,4 @@
+// @ts-check
 const jwt = require('jsonwebtoken');
 const path = require('path');
 
@@ -23,9 +24,13 @@ module.exports = {
     const timestamp = require(path.resolve(__dirname, '..', '..', 'config', 'timestamp.json'));
     const decoded = jwt.verify(token, timestamp);
     const current_time = Date.now() / 1000;
-    return decoded.exp && decoded.exp > current_time;
+    // @ts-ignore
+    return !!decoded.exp && decoded.exp > current_time;
   },
 
+  /**
+   * @returns {void}
+   */
   saveTimestamp() {
     const fs = require('fs');
     const filepath = path.resolve(__dirname, '..', '..', 'config', 'timestamp.json');

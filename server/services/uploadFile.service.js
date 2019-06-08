@@ -5,6 +5,10 @@ const httpContext = require('express-http-context');
 const path = require('path');
 
 module.exports = {
+
+  /**
+   * @returns {Express.Multer.File}
+   */
   uploadProject() {
     const fileName = 'proyecto.zip';
     const destinationPath = path.resolve(__dirname, '..', '..', 'project');
@@ -26,6 +30,10 @@ module.exports = {
     });
     return upload.single('project');
   },
+
+  /**
+   * @returns {Express.Multer.File}
+   */
   uploadSlide() {
     const basepath = path.resolve(__dirname, '..', '..', 'project');
     const destinationPath = path.resolve(__dirname, '..', '..', 'project', 'proyecto');
@@ -49,4 +57,5 @@ module.exports = {
     });
     return upload.single('slide');
   },
+
 };

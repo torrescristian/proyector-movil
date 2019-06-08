@@ -1,6 +1,10 @@
+// @ts-check
 const os = require('os');
 
 module.exports = {
+  /**
+   * @returns {string}
+   */
   getIPAddress() {
     const interfaces = os.networkInterfaces();
     const addresses = [];
