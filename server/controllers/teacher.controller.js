@@ -1,3 +1,4 @@
+// @ts-check
 const path = require('path');
 const fileService = require(path.resolve(__dirname, '..', 'services', 'file.service'));
 const fs = require('fs');
@@ -14,17 +15,27 @@ module.exports = {
       destination: proyectoPath,
     });
 
-    const data = JSON.parse(fs.readFileSync(path.resolve(proyectoPath, 'data.json')));
+    const data = JSON.parse(fs.readFileSync(path.resolve(proyectoPath, 'data.json'), 'utf8'));
     res.json(data);
   },
   async export(req, res) {
     const folderpath = proyectoPath;
-
+    /**
+     * @type{Object}
+     */
+    const database = req.body.database;
+    const data = JSON.stringify(database);
+      
     fileService.writeFileSync({
-      data: JSON.stringify(req.body.database),
+      data,
       folderpath,
       filename: 'data.json',
     });
+
+    fileService.removeNonIndexedSlides({
+      data: Object.keys(database),
+      folderpath,
+    })
 
     await fileService.zip({
       folderpath,
