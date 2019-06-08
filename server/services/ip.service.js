@@ -8,7 +8,7 @@ module.exports = {
   getIPAddress() {
     const interfaces = os.networkInterfaces();
     const addresses = [];
-    
+
     for (let k in interfaces) {
       for (let k2 in interfaces[k]) {
         const address = interfaces[k][k2];
@@ -17,10 +17,19 @@ module.exports = {
         }
       }
     }
+    
+    const [address192] = addresses
+      .filter((address) => address.match(/^192\./))
+      .sort((acum, val) => (acum > val ? 1 : -1));
 
-    const [ address192 ] = addresses.filter((address) => address.match(/^192\./));
-    const [ address10 ] = addresses.filter((address) => address.match(/^10\./));
-    const [ address172 ] = addresses.filter((address) => address.match(/^172\./));
+    const [address10] = addresses
+      .filter((address) => address.match(/^10\./))
+      .sort((acum, val) => (acum > val ? 1 : -1));
+    
+    const [address172] = addresses
+      .filter((address) => address.match(/^172\./))
+      .sort((acum, val) => (acum > val ? 1 : -1));
+
     return address192 || address10 || address172;
   },
 };
