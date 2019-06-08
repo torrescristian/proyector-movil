@@ -20,15 +20,15 @@ module.exports = {
     
     const [address192] = addresses
       .filter((address) => address.match(/^192\./))
-      .sort((acum, val) => (acum > val ? 1 : -1));
+      .sort((prev, next) => (prev > next ? 1 : -1));
 
     const [address10] = addresses
       .filter((address) => address.match(/^10\./))
-      .sort((acum, val) => (acum > val ? 1 : -1));
+      .sort((prev, next) => (prev > next ? 1 : -1));
     
     const [address172] = addresses
       .filter((address) => address.match(/^172\./))
-      .sort((acum, val) => (acum > val ? 1 : -1));
+      .sort((prev, next) => (prev > next ? 1 : -1));
 
     return address192 || address10 || address172;
   },
