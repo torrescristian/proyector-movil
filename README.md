@@ -2,7 +2,7 @@
 
 # Download project
 ```
-git clone --recursive --branch dev https://github.com/torrescristian/proyector-movil-core.git
+git clone --recursive --branch dev https://github.com/torrescristian/proyector-movil.git
 ```
 ```
 git submodule update --init --recursive
@@ -16,7 +16,7 @@ git submodule foreach --recursive git checkout dev
 npm install
 ```
 
-### Start the electron app and serve the teacher compiled page on `{teacher-root}/dist` folder
+### Start the electron app and serve the teacher compiled pages on `submodules/teacher/dist` and `submodules/students/dist` folders
 ```
 npm start
 ```
