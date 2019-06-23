@@ -1,6 +1,6 @@
-# proyector-movil-students
+# proyector-movil
 
-# Download project
+## Download project
 ```
 git clone --recursive --branch dev https://github.com/torrescristian/proyector-movil.git
 ```
@@ -16,7 +16,7 @@ git submodule foreach --recursive git checkout dev
 npm install
 ```
 
-### Start the electron app and serve the teacher compiled pages on `submodules/teacher/dist` and `submodules/students/dist` folders
+### Start the electron app and serve the teacher and student compiled pages on `submodules/teacher/dist` and `submodules/students/dist` folders
 ```
 npm start
 ```
@@ -24,9 +24,4 @@ npm start
 ### Start the electron app and redirect to the teacher pages on `http://localhost:8080`
 ```
 npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
 ```
