@@ -2,13 +2,16 @@
 
 ## Download project
 ```
-git clone --recursive --branch dev https://github.com/torrescristian/proyector-movil.git
+git clone --recursive --branch master https://github.com/torrescristian/proyector-movil.git
+```
+```
+cd proyector-movil
 ```
 ```
 git submodule update --init --recursive
 ```
 ```
-git submodule foreach --recursive git checkout dev
+git submodule foreach --recursive git checkout master
 ```
 
 ## Project setup
