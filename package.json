@@ -8,7 +8,9 @@
     "serve": "electron . --NODE_ENV=dev",
     "build:win:32": "electron-packager ./ --platform=win32 --arch=ia32  --icon=./favicon.ico --out=./dist --overwrite --app-copyright=\"Copyright © 2019 Cristian Tomas Torres\" --win32metadata.CompanyName=\"Cristian Tomas Torres\" --win32metadata.ProductName=\"Proyector Móvil\" --win32metadata.FileDescription=\"Desktop application that emit images to a client in the same local network\"",
     "build:win:64": "electron-packager ./ --platform=win32 --arch=x64   --icon=./favicon.ico --out=./dist --overwrite --app-copyright=\"Copyright © 2019 Cristian Tomas Torres\" --win32metadata.CompanyName=\"Cristian Tomas Torres\" --win32metadata.ProductName=\"Proyector Móvil\" --win32metadata.FileDescription=\"Desktop application that emit images to a client in the same local network\"",
-    "build:linux:64": "electron-packager ./ --platform=linux --arch=x64 --icon=./favicon.ico --out=./dist --overwrite"
+    "build:linux:64": "electron-packager ./ --platform=linux --arch=x64 --icon=./favicon.ico --out=./dist --overwrite",
+    "docs:dev": "vuepress dev",
+    "docs:build": "vuepress build"
   },
   "repository": {
     "type": "git",
@@ -36,6 +38,7 @@
   "devDependencies": {
     "@types/express": "^4.17.0",
     "electron": "^4.2.3",
-    "electron-packager": "^13.1.1"
+    "electron-packager": "^13.1.1",
+    "vuepress": "^1.0.3"
   }
 }
