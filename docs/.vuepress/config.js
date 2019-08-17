@@ -1,4 +1,4 @@
 module.exports = {
-    // base: '/docs/', // dev
-    base: '/proyector-movil/', // prod
+    base: '/docs/', // dev
+    // base: '/proyector-movil/', // prod
 }
