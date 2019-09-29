@@ -10,7 +10,12 @@
     "build:win:64": "electron-packager ./ --platform=win32 --arch=x64   --icon=./favicon.ico --out=./dist --overwrite --app-copyright=\"Copyright © 2019 Cristian Tomas Torres\" --win32metadata.CompanyName=\"Cristian Tomas Torres\" --win32metadata.ProductName=\"Proyector Móvil\" --win32metadata.FileDescription=\"Desktop application that emit images to a client in the same local network\"",
     "build:linux:64": "electron-packager ./ --platform=linux --arch=x64 --icon=./favicon.ico --out=./dist --overwrite",
     "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "docs:build": "vuepress build docs",
+    "postinstall": "npm run submodules:update && npm run submodules:checkout-master && npm run submodules:install && npm run submodules:build",
+    "submodules:update": "git submodule update --init --recursive",
+    "submodules:checkout-master": "git submodule foreach --recursive git checkout master",
+    "submodules:install": "git submodule foreach --recursive npm install",
+    "submodules:build": "git submodule foreach --recursive npm run build"
   },
   "repository": {
     "type": "git",
