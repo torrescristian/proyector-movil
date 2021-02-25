@@ -36,24 +36,24 @@
   },
   "homepage": "https://github.com/torrescristian/proyector-movil#readme",
   "dependencies": {
-    "archiver": "^3.0.0",
-    "config": "^3.1.0",
-    "decompress": "^4.2.0",
+    "archiver": "^3.1.1",
+    "config": "^3.3.3",
+    "decompress": "^4.2.1",
     "express": "^4.16.4",
-    "express-http-context": "^1.2.2",
+    "express-http-context": "^1.2.4",
     "fs-extra": "^7.0.1",
     "joi": "^14.3.1",
     "jsonwebtoken": "^8.5.1",
-    "multer": "^1.4.1",
+    "multer": "^1.4.2",
     "qr-image": "^3.2.0",
-    "socket.io": "^2.2.0"
+    "socket.io": "^2.4.1"
   },
   "devDependencies": {
-    "@types/express": "^4.17.0",
-    "electron": "^4.2.3",
+    "@types/express": "^4.17.11",
+    "electron": "^11.3.0",
     "electron-packager": "^13.1.1",
     "ghooks": "^2.0.4",
-    "jest": "^24.9.0",
-    "vuepress": "^1.0.3"
+    "jest": "^26.6.3",
+    "vuepress": "^1.8.2"
   }
 }
