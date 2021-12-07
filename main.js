@@ -12,7 +12,7 @@ app.on('ready', async () => {
 });
 
 app.on('window-all-closed', () => {
-  app.quit();
+  app.quit()
 });
 
 /**
